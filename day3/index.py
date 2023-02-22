@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 gui = Tk()
 gui.title('เมียขี้เกียจจด')
@@ -10,7 +11,7 @@ gui.config(bg="skyblue")
 # gui.columnconfigure(0, weight=1)
 # gui.columnconfigure(1, weight=1)
 
-title_label = ttk.Label(gui, text="บันทึกโพย", font=('MesloLGM NF', 16),background='gray')
+title_label = ttk.Label(gui, text="บันทึกโพย", font=('MesloLGM NF', 16))
 title_label.grid(column=0, row=0, padx=5, pady=5, columnspan=3)
 
 num_type_label = ttk.Label(gui, text="เล่น:", font=('MesloLGM NF', 16))
