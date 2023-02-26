@@ -1,5 +1,33 @@
 # Python101
-เรียนพื้นฐาน Python 16 ชั่วโมง by Uncle Engineer
+### หัวข้อที่จะเรียน
+- List, Dictionary, Set, Tuple
+- For loop, While loop
+- If, else, elif and logical expression
+- User input, (CLI , GUI)
+- Function, Class, OOP
+- Try, exception, error type
+- Python debuging
+- Files: txt, csv, excel
+- Python unittest
+- Basic Git, Github
+- Upload package to PyPI.org
+- Python to exe
+- Python GUI
+- Python Turtle
+- Google Colab
+- Python Snake Game
+- Pyautogui - Automated mouse and keyboard control
+<br><br>
+### Workshop
+- เขียนโปรแกรมเต่าวาดรูปเพื่อฝึกพื้นฐาน
+- เขียนโปรแกรม GUI โปรแกรมบันทึกความรู้ประจำวันบันทึกลงไฟล์ CSV
+- สร้างไลบรารี่เป็นของตัวเองอัพโหลดขึ้น PyPi.org
+- ทดลองสร้างเกมงูด้วย Python
+- สร้างโปรไฟล์ตัวเองใน Github.com เพื่อเป็น Portfolio สำหรับอ้างอิงผลงาน
+- ทดลองเขียนโปรแกรมสั่งคลิกเมาส์และสั่งพิมพ์อัตโนมัติ
+- แปลงโปรแกรมที่ต้องการเป็นไฟล์ exe สร้างไฟล์ setup เพื่อส่งไปให้คนอื่นใช้ต่อ
+<br><br>
+### เรียนพื้นฐาน Python 16 ชั่วโมง by Uncle Engineer
 
 วันที่ 1 เริ่มเรียนจากเต่า
 
