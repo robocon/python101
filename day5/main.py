@@ -9,6 +9,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox 
 
+import webbrowser
+
 winWidth=400
 winHeight=300
 
@@ -48,36 +50,38 @@ def calHypertension(sys, dia):
 def submitForm():
     if numSys.get().strip()=='' or numDia.get().strip()=='':
         messagebox.showinfo('ข้อมูลไม่ครบ','กรุณาใส่ค่าความดันให้ครบถ้วน')
+    
+    else:
         
-    sys = int(numSys.get())
-    dia = int(numDia.get())
+        sys = int(numSys.get())
+        dia = int(numDia.get())
 
-    today = datetime.now()
+        today = datetime.now()
 
-    txt=calHypertension(sys, dia)
-    defaultMsg.set(txt)
+        txt=calHypertension(sys, dia)
+        defaultMsg.set(txt)
 
-    config = dotenv_values('.env')
+        config = dotenv_values('.env')
 
-    # Fetch the service account key JSON file contents
-    cred = credentials.Certificate(config['FIREBASE_ADMINSDK'])
+        # Fetch the service account key JSON file contents
+        cred = credentials.Certificate(config['FIREBASE_ADMINSDK'])
 
-    # Initialize the app with a service account, granting admin privileges
-    firebase_admin.initialize_app(cred, {
-        'databaseURL': config['FRIEBASE_DB_URL']
-    }) 
+        # Initialize the app with a service account, granting admin privileges
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': config['FRIEBASE_DB_URL']
+        }) 
 
-    # As an admin, the app has access to read and write all data, regradless of Security Rules
-    ref = db.reference('/hypertension')
-    ref.push({
-        'date':today.isoformat(),
-        'sys':sys,
-        'dia':dia,
-        'text':txt
-    })
+        # As an admin, the app has access to read and write all data, regradless of Security Rules
+        ref = db.reference('/hypertension')
+        ref.push({
+            'date':today.isoformat(),
+            'sys':sys,
+            'dia':dia,
+            'text':txt
+        })
 
-    numSys.delete(0, END)
-    numDia.delete(0, END)
+        numSys.delete(0, END)
+        numDia.delete(0, END)
 
 defaultMsg = StringVar()
 
@@ -98,5 +102,12 @@ save_button.grid(column=0, row=2, padx=5, pady=5, columnspan=2)
 
 showLabel = ttk.Label(gui, textvariable=defaultMsg, font=('TH Sarabun New', 16, 'bold'))
 showLabel.grid(column=0, row=3, sticky=tk.W, padx=5, pady=5, columnspan=2)
+
+link = Label(gui, text="คุณเป็นความดันสูงรึป่าว? ", foreground='blue', font=('TH Sarabun New', 16), cursor="hand2")
+link.grid(column=0, row=4, padx=5, pady=5, columnspan=2)
+link.bind("<Button-1>", lambda e: webbrowser.open_new_tab("https://www.siphhospital.com/th/news/article/share/hypertension"))
+
+bl2 = Label(gui, text="ข้อมูลจากเว็บไซต์โรงพยาบาลศิริราช www.siphhospital.com",font=('TH Sarabun New', 12))
+bl2.grid(column=0, row=5, padx=5, pady=5, columnspan=2)
 
 gui.mainloop()
