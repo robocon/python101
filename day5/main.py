@@ -19,6 +19,16 @@ gui.title('โปรแกรมตรวจสอบระดับความ
 gui.geometry(str(winWidth)+"x"+str(winHeight))
 gui.maxsize(winWidth,winHeight)
 
+config = dotenv_values('.env')
+
+# Fetch the service account key JSON file contents
+cred = credentials.Certificate(config['FIREBASE_ADMINSDK'])
+
+# Initialize the app with a service account, granting admin privileges
+firebase_admin.initialize_app(cred, {
+    'databaseURL': config['FRIEBASE_DB_URL']
+}) 
+
 def calHypertension(sys, dia):
     if sys<120 and dia<80 :
         txt = 'ความดันโลหิตที่ดี'
@@ -48,6 +58,7 @@ def calHypertension(sys, dia):
 
 
 def submitForm():
+    global db
     if numSys.get().strip()=='' or numDia.get().strip()=='':
         messagebox.showinfo('ข้อมูลไม่ครบ','กรุณาใส่ค่าความดันให้ครบถ้วน')
     
@@ -60,16 +71,6 @@ def submitForm():
 
         txt=calHypertension(sys, dia)
         defaultMsg.set(txt)
-
-        config = dotenv_values('.env')
-
-        # Fetch the service account key JSON file contents
-        cred = credentials.Certificate(config['FIREBASE_ADMINSDK'])
-
-        # Initialize the app with a service account, granting admin privileges
-        firebase_admin.initialize_app(cred, {
-            'databaseURL': config['FRIEBASE_DB_URL']
-        }) 
 
         # As an admin, the app has access to read and write all data, regradless of Security Rules
         ref = db.reference('/hypertension')
