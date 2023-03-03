@@ -14,6 +14,11 @@
 >"PATH_TO_PYTHON" -m pip install unclechat
 ```
 
+หรือใช้ ```--user ``` ตามท้ายเพื่อเป็นการบ่งบอกว่าให้ติดตั้งเฉพาะ windows user ที่ใช้งาน ณ ขณะนี้ เท่านั้น
+```
+>pip install unclechat --user
+```
+
 ### เทคนิคเล็กๆน้อยๆ เกี่ยวกับ List
 ```
 # เกี่ยวกับการเพิ่มลบข้อมูล
@@ -62,3 +67,11 @@ friends.values()
 # ออกมาเฉพาะ key
 friends.keys()
 ```
+
+# Library นอก
+1. [python-dotenv](https://github.com/theskumar/python-dotenv) key-value pairs from a .env file
+2. [Firebase for python](https://firebase.google.com/docs/database/admin/start?authuser=0&hl=en#python) Admin Database API
+
+# Ref.
+1. [From Novice to Expert: How to Write a Configuration file in Python](https://towardsdatascience.com/from-novice-to-expert-how-to-write-a-configuration-file-in-python-273e171a8eb3)
+2. [https://www.youtube.com/watch?v=mNMv3WNgp0c](https://www.youtube.com/watch?v=mNMv3WNgp0c)
